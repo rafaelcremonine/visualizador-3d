@@ -1,7 +1,7 @@
 {
-  "name": "Visualizador 3D",
-  "short_name": "Visualizador 3D",
-  "description": "Veja e gire modelos 3D. Carregue arquivos GLB, GLTF, OBJ, STL, FBX e PLY.",
+  "name": "Portal de Apps do Pedro",
+  "short_name": "Portal do Pedro",
+  "description": "Portal com visualizadores 3D, de mob, item e bloco pra conferir criações do Minecraft antes de colocar no jogo.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
