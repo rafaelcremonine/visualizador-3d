@@ -1,9 +1,8 @@
 /* Utilidades compartilhadas por todos os visualizadores. Usa window.THREE e window.MCV. */
 (function () {
-  const THREE = window.THREE;
-  const { OrbitControls, RoomEnvironment } = window.MCV;
-
   function createStage(opts = {}) {
+    const THREE = window.THREE;
+    const { OrbitControls, RoomEnvironment } = window.MCV;
     const { env = true, grid = true, bg = 0x0f1117 } = opts;
     const wrap = document.getElementById('canvas-wrap');
 

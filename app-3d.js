@@ -5,7 +5,29 @@
   C.registerSW();
 
   const stage = C.createStage({ env: true, grid: true });
-  let current = null, wireframe = false;
+  let current = null, wireframe = false, smart = false;
+
+  // sombra de contato (modo Minecraft)
+  const shadow = (() => {
+    const cv = document.createElement('canvas'); cv.width = cv.height = 128;
+    const ctx = cv.getContext('2d');
+    const grd = ctx.createRadialGradient(64, 64, 4, 64, 64, 62);
+    grd.addColorStop(0, 'rgba(0,0,0,0.55)'); grd.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grd; ctx.fillRect(0, 0, 128, 128);
+    const tex = new THREE.CanvasTexture(cv);
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false }));
+    m.rotation.x = -Math.PI / 2; m.visible = false; stage.scene.add(m);
+    return m;
+  })();
+  function placeShadow() {
+    if (!current) return;
+    const box = new THREE.Box3().setFromObject(current);
+    const size = box.getSize(new THREE.Vector3());
+    const r = Math.max(size.x, size.z) * 1.6;
+    shadow.scale.set(r, r, 1);
+    shadow.position.set((box.min.x + box.max.x) / 2, box.min.y + 0.001, (box.min.z + box.max.z) / 2);
+    shadow.visible = smart;
+  }
 
   function defaultMat() { return new THREE.MeshStandardMaterial({ color: 0xb8c0d0, metalness: 0.1, roughness: 0.6 }); }
 
@@ -20,6 +42,7 @@
     box.setFromObject(obj); box.getCenter(center); obj.position.sub(center);
     applyWire();
     stage.frame(obj);
+    placeShadow();
   }
   function applyWire() {
     current?.traverse((c) => { if (c.isMesh && c.material) (Array.isArray(c.material) ? c.material : [c.material]).forEach(m => m.wireframe = wireframe); });
@@ -55,6 +78,8 @@
   wireBtn.addEventListener('click', () => { wireframe = !wireframe; wireBtn.classList.toggle('active', wireframe); applyWire(); });
   const gridBtn = document.getElementById('grid-btn');
   gridBtn.addEventListener('click', () => { stage.grid.visible = !stage.grid.visible; gridBtn.classList.toggle('active', stage.grid.visible); });
+  const smartBtn = document.getElementById('smart-btn');
+  smartBtn.addEventListener('click', () => { smart = !smart; smartBtn.classList.toggle('active', smart); placeShadow(); });
 
   loadDemo();
 })();

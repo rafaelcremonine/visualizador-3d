@@ -1,17 +1,25 @@
 // Service worker — deixa o portal e os apps funcionarem offline
-const CACHE = 'portal-pedro-v1';
+const CACHE = 'portal-pedro-v2';
+const B = './samples/blocks/';
 const ASSETS = [
   './', './index.html',
   './app-3d.html', './app-3d.js',
   './app-mob.html', './app-mob.js',
   './app-item.html', './app-item.js',
   './app-block.html', './app-block.js',
-  './vendor.js', './common.js', './style.css', './manifest.json',
+  './app-skin.html', './app-skin.js',
+  './app-som.html', './app-som.js',
+  './app-comandos.html', './app-comandos.js',
+  './app-mundo.html', './app-mundo.js',
+  './vendor.js', './common.js', './bedrock.js', './style.css', './manifest.json',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-180.png', './icons/maskable-512.png',
   './samples/arvore_minecraft.glb',
   './samples/mob_porquinho.geo.json', './samples/mob_porquinho.png',
-  './samples/item_maca.png', './samples/bloco_madeira.png',
-  './samples/grama_top.png', './samples/grama_side.png', './samples/grama_bottom.png'
+  './samples/item_maca.png', './samples/skin_steve.png',
+  B + 'grama_top.png', B + 'grama_side.png', B + 'grama_bottom.png',
+  B + 'terra.png', B + 'pedra.png', B + 'pedregulho.png', B + 'planks.png',
+  B + 'tronco_top.png', B + 'tronco_side.png', B + 'areia.png', B + 'folhas.png',
+  B + 'minerio_diamante.png', B + 'minerio_ouro.png', B + 'minerio_carvao.png'
 ];
 
 self.addEventListener('install', (e) => {

@@ -6,7 +6,13 @@
   const stage = C.createStage({ env: true, grid: false });
   stage.controls.autoRotateSpeed = 2.0;
   let mesh = null;
-  let flat = false;
+  let flat = false, smart = false, t0 = 0;
+
+  // Modo Minecraft: item flutua (igual item jogado no chão)
+  stage.addTick(() => {
+    if (!mesh) return;
+    mesh.position.y = (smart && !flat) ? Math.sin((performance.now() - t0) / 400) * 1.6 : 0;
+  });
 
   function clear() {
     if (mesh) { stage.scene.remove(mesh); mesh.geometry.dispose(); mesh.material.dispose(); mesh = null; }
@@ -93,6 +99,8 @@
   document.getElementById('reset-btn').addEventListener('click', () => { flat = false; document.getElementById('flat-btn').classList.remove('active'); mesh && stage.frame(mesh, 1.9); });
   const flatBtn = document.getElementById('flat-btn');
   flatBtn.addEventListener('click', () => { flat = !flat; flatBtn.classList.toggle('active', flat); if (!flat && mesh) stage.frame(mesh, 1.9); applyFlat(); });
+  const smartBtn = document.getElementById('smart-btn');
+  smartBtn.addEventListener('click', () => { smart = !smart; smartBtn.classList.toggle('active', smart); t0 = performance.now(); });
 
   demo();
 })();

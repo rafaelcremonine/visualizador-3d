@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tocador de Som</title>
+<meta name="theme-color" content="#0f1117">
+<link rel="apple-touch-icon" href="./icons/icon-180.png">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body class="tool">
+  <div class="tool-top">
+    <a class="btn" href="./index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></a>
+    <h1>🎵 Tocador de Som / Música</h1>
+  </div>
+  <div class="tool-wrap">
+    <div class="panel">
+      <h2>Escolha um som pra ouvir</h2>
+      <p class="muted">Carregue um arquivo de áudio (OGG, MP3, WAV, M4A) pra escutar antes de colocar no Minecraft.</p>
+      <div style="margin-top:14px"><button class="bigbtn" id="load-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Carregar som
+      </button></div>
+      <input type="file" id="file-input" class="hidden-input" accept="audio/*,.ogg,.mp3,.wav,.m4a">
+    </div>
+
+    <div class="panel" id="player" style="display:none">
+      <h2 id="sname">—</h2>
+      <div class="playrow">
+        <button class="playbtn" id="play"><svg id="play-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <div style="flex:1">
+          <input type="range" id="seek" min="0" max="100" value="0" style="width:100%">
+          <div class="muted" id="time">0:00 / 0:00</div>
+        </div>
+      </div>
+      <canvas id="viz"></canvas>
+    </div>
+  </div>
+  <script src="./common.js"></script>
+  <script src="./app-som.js"></script>
+</body>
+</html>

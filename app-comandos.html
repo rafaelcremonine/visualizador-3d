@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Conferidor de Comandos</title>
+<meta name="theme-color" content="#0f1117">
+<link rel="apple-touch-icon" href="./icons/icon-180.png">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body class="tool">
+  <div class="tool-top">
+    <a class="btn" href="./index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></a>
+    <h1>⌨️ Conferidor de Comandos</h1>
+  </div>
+  <div class="tool-wrap">
+    <div class="panel">
+      <h2>Cole aqui o comando</h2>
+      <p class="muted">Cole um comando do Minecraft (Bedrock) e eu mostro o que ele faz, explico cada pedacinho e aviso se tem algo estranho.</p>
+      <textarea id="cmd" rows="3" placeholder="/give @p diamond 10" style="margin-top:12px"></textarea>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <button class="btn" data-ex="/give @p diamond_sword 1">Exemplo: espada</button>
+        <button class="btn" data-ex="/summon pig ~ ~ ~">Exemplo: porco</button>
+        <button class="btn" data-ex="/effect @s jump_boost 30 2">Exemplo: pulo</button>
+      </div>
+    </div>
+
+    <div class="panel" id="result" style="display:none">
+      <h2>O comando</h2>
+      <div id="tokens"></div>
+      <div class="explain" id="explain"></div>
+      <div id="checks" style="margin-top:12px"></div>
+    </div>
+  </div>
+  <script src="./common.js"></script>
+  <script src="./app-comandos.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Mundo — Regras</title>
+<meta name="theme-color" content="#0f1117">
+<link rel="apple-touch-icon" href="./icons/icon-180.png">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body class="tool">
+  <div class="tool-top">
+    <a class="btn" href="./index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></a>
+    <h1>🌍 Mundo — Regras do Jogo</h1>
+  </div>
+  <div class="tool-wrap">
+    <div class="panel">
+      <p class="muted">Escolha como o mundo funciona. Embaixo aparecem os comandos prontinhos pra você copiar e colar no chat do Minecraft (Bedrock).</p>
+    </div>
+
+    <div class="panel">
+      <h2>Ambiente</h2>
+      <div class="rule"><div class="lbl"><b>Hora do dia</b><span>que horas são no mundo</span></div>
+        <div class="seg" data-cmd="time"><button data-v="day">Dia</button><button data-v="noon">Meio-dia</button><button data-v="sunset">Tarde</button><button data-v="night">Noite</button><button data-v="midnight">Meia-noite</button></div></div>
+      <div class="rule"><div class="lbl"><b>Clima</b><span>tempo no céu</span></div>
+        <div class="seg" data-cmd="weather"><button data-v="clear">Limpo</button><button data-v="rain">Chuva</button><button data-v="thunder">Trovoada</button></div></div>
+      <div class="rule"><div class="lbl"><b>Dificuldade</b><span>o quão difícil é</span></div>
+        <div class="seg" data-cmd="difficulty"><button data-v="peaceful">Pacífico</button><button data-v="easy">Fácil</button><button data-v="normal">Normal</button><button data-v="hard">Difícil</button></div></div>
+      <div class="rule"><div class="lbl"><b>Modo de jogo</b><span>como você joga</span></div>
+        <div class="seg" data-cmd="gamemode"><button data-v="survival">Sobrevivência</button><button data-v="creative">Criativo</button><button data-v="adventure">Aventura</button></div></div>
+    </div>
+
+    <div class="panel">
+      <h2>Regras (liga/desliga)</h2>
+      <div id="rules"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Comandos prontos</h2>
+      <p class="muted">Copie e cole no chat do jogo (um por vez, ou todos).</p>
+      <div class="codebox" id="out" style="margin-top:10px">—</div>
+      <button class="bigbtn copy" id="copy" style="margin-top:12px">📋 Copiar todos</button>
+    </div>
+  </div>
+  <script src="./common.js"></script>
+  <script src="./app-mundo.js"></script>
+</body>
+</html>
