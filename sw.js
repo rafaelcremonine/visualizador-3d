@@ -1,5 +1,6 @@
 // Service worker — deixa o portal e os apps funcionarem offline
-const CACHE = 'portal-pedro-v2';
+const CACHE = 'portal-pedro-v3';
+const M = './icons/mod/';
 const B = './samples/blocks/';
 const ASSETS = [
   './', './index.html',
@@ -13,6 +14,7 @@ const ASSETS = [
   './app-mundo.html', './app-mundo.js',
   './vendor.js', './common.js', './bedrock.js', './style.css', './manifest.json',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-180.png', './icons/maskable-512.png',
+  M + '3d.png', M + 'mob.png', M + 'item.png', M + 'block.png', M + 'skin.png', M + 'som.png', M + 'comandos.png', M + 'mundo.png',
   './samples/arvore_minecraft.glb',
   './samples/mob_porquinho.geo.json', './samples/mob_porquinho.png',
   './samples/item_maca.png', './samples/skin_steve.png',
