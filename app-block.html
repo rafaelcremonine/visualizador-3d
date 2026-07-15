@@ -32,7 +32,8 @@
   <div class="info">
     <div><b>Bloco:</b> <span class="fname" id="fname">exemplo</span></div>
     <div style="margin-top:8px">Toque num bloco da galeria embaixo 👇</div>
-    <div style="margin-top:4px">Ou carregue seu PNG (1, ou 3 com <b>_top/_side/_bottom</b>).</div>
+    <div style="margin-top:4px">Textura: PNG (1, ou 3 com <b>_top/_side/_bottom</b>).</div>
+    <div style="margin-top:4px">Forma própria: carregue a <b>geometria (.geo/.json)</b> + a textura juntas.</div>
     <div id="smart-hint" style="display:none;margin-top:6px;color:var(--accent)">🧠 Modo Minecraft: luz igual ao jogo (topo claro, base escura).</div>
   </div>
 
@@ -41,10 +42,11 @@
   <div id="drop-overlay"><div class="drop-card"><h2>Solte a textura aqui</h2><p>PNG (16×16 recomendado)</p></div></div>
   <div id="loading"><div class="spinner"></div><p>Carregando…</p></div>
   <div id="toast"></div>
-  <input type="file" id="file-input" class="hidden-input" accept="image/png,image/*" multiple>
+  <input type="file" id="file-input" class="hidden-input" accept=".json,.geo,image/png,image/*" multiple>
 
   <script src="./vendor.js"></script>
   <script src="./common.js"></script>
+  <script src="./bedrock.js"></script>
   <script src="./app-block.js"></script>
 </body>
 </html>

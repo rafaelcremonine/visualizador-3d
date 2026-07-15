@@ -1,5 +1,5 @@
 // Service worker — deixa o portal e os apps funcionarem offline
-const CACHE = 'portal-pedro-v3';
+const CACHE = 'portal-pedro-v6';
 const M = './icons/mod/';
 const B = './samples/blocks/';
 const ASSETS = [
@@ -18,6 +18,7 @@ const ASSETS = [
   './samples/arvore_minecraft.glb',
   './samples/mob_porquinho.geo.json', './samples/mob_porquinho.png',
   './samples/item_maca.png', './samples/skin_steve.png',
+  './samples/cano.geo.json', './samples/cano.png',
   B + 'grama_top.png', B + 'grama_side.png', B + 'grama_bottom.png',
   B + 'terra.png', B + 'pedra.png', B + 'pedregulho.png', B + 'planks.png',
   B + 'tronco_top.png', B + 'tronco_side.png', B + 'areia.png', B + 'folhas.png',
@@ -30,13 +31,14 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
 });
+// Network-first: online sempre pega a versão nova; offline usa a cópia guardada.
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
   e.respondWith(
-    caches.match(e.request).then((hit) => hit || fetch(e.request).then((res) => {
+    fetch(e.request).then((res) => {
       const copy = res.clone();
       caches.open(CACHE).then((c) => c.put(e.request, copy)).catch(() => {});
       return res;
-    }).catch(() => hit))
+    }).catch(() => caches.match(e.request))
   );
 });
