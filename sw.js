@@ -1,5 +1,5 @@
 // Service worker — deixa o portal e os apps funcionarem offline
-const CACHE = 'portal-pedro-v7';
+const CACHE = 'portal-pedro-v8';
 const M = './icons/mod/';
 const B = './samples/blocks/';
 const ASSETS = [
